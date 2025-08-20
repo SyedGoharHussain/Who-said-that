@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Anonymous Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="container">
+                <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+                <nav>
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/admin" class="nav-link active">Admin Panel</a>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="admin-content">
+            <div class="admin-card">
+                <h2><i class="fas fa-plus-circle"></i> Create New Room</h2>
+                <form id="create-room-form">
+                    <div class="form-group">
+                        <label for="room-name">Room Name</label>
+                        <input type="text" id="room-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="room-description">Description</label>
+                        <textarea id="room-description" rows="3"></textarea>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="room-locked">
+                        <label for="room-locked">Locked Room (requires password)</label>
+                    </div>
+                    <div class="form-group" id="password-field" style="display: none;">
+                        <label for="room-password">Password</label>
+                        <input type="password" id="room-password">
+                    </div>
+                    <button type="submit" class="btn">Create Room</button>
+                </form>
+            </div>
+            
+            <div class="admin-card">
+                <h2><i class="fas fa-list"></i> Existing Rooms</h2>
+                <div class="rooms-list" id="admin-rooms-list">
+                    <!-- Rooms will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Anonymous Chat Admin Panel &copy; 2024</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

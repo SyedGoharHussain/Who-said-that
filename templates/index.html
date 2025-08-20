@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Chat Rooms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="container">
+                <div>
+                    <h1><i class="fas fa-comments"></i>Who Said That?!</h1>
+                    <p class="tagline">Connect with your friends without revealing your identity</p>
+                </div>
+                <nav>
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/admin" class="nav-link">Admin Panel</a>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="hero">
+            <h2>Welcome to Anonymous Chat</h2>
+            <p>Join existing rooms or create your own to start chatting with your classmates anonymously.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="room-count">0</span>
+                    <span class="stat-label">Active Rooms</span>
+                </div>
+
+            </div>
+        </div>
+        
+        <section class="rooms-section">
+            <h2>Available Chat Rooms</h2>
+            <div class="rooms-grid" id="rooms-grid">
+                <!-- Rooms will be loaded here -->
+            </div>
+        </section>
+        
+        <div class="modal" id="password-modal">
+            <div class="modal-content">
+                <h2>Enter Room Password</h2>
+                <p>This room is locked. Please enter the password to join.</p>
+                <input class="form-group" type="password" id="room-password" placeholder="Enter password">
+                <div class="modal-buttons">
+                    <button id="join-room-btn" class="btn">Join Room</button>
+                    <button id="cancel-password" class="btn btn-outline">Cancel</button>
+                </div>
+                <p id="password-error" class="error-message"></p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Anonymous Chat &copy; 2024 | For classroom use only</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room - Anonymous Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="container">
+                <h1><i class="fas fa-door-open"></i> <span id="room-title">{{ room_name }}</span></h1>
+                <nav>
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/admin" class="nav-link">Admin Panel</a>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="chat-container">
+            <div class="sidebar">
+                <h2>Chat Room Info</h2>        
+                <div class="room-info">
+                    <p><strong>Room ID:</strong> <span id="room-id">{{ room_id }}</span></p>
+                    <p><strong>Room Description:</strong> <span id="room-description">{{ room_description if room_description else 'No description provided' }}</span></p>
+                </div>
+                
+                <button id="leave-room" class="btn">Leave Room</button>
+            </div>
+            
+            <div class="chat-main">
+                <div class="messages-container" id="messages-container">
+                    <!-- Messages will be loaded here -->
+                </div>
+                
+                <div class="message-input-container">
+                    <input type="text" id="message-input" placeholder="Type your message here...">
+                    <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal" id="reply-modal">
+            <div class="modal-content">
+                <h2>Reply to Message</h2>
+                <div class="original-message" id="original-message">
+                    <!-- Original message will be shown here -->
+                </div>
+                <input type="text" id="reply-input" placeholder="Type your reply...">
+                <div class="modal-buttons">
+                    <button id="send-reply" class="btn">Send Reply</button>
+                    <button id="cancel-reply" class="btn btn-outline">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>You are: <span id="user-id">anonymous</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Pass room ID from Flask to JavaScript
+        const roomId = "{{ room_id }}";
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
