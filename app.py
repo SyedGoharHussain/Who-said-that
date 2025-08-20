@@ -20,8 +20,8 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Admin credentials
-ADMIN_ID = "gohar"
-ADMIN_PASSWORD = "gohar123"
+ADMIN_ID = ""
+ADMIN_PASSWORD = ""
 
 # File upload configuration
 UPLOAD_FOLDER = 'uploads'
@@ -405,4 +405,5 @@ def verify_room_password():
         return jsonify({'error': str(e)}), 500
     
 if __name__ == '__main__':
+
     app.run(debug=True)
